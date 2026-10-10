@@ -1,0 +1,23 @@
+import {describe,it,expect} from 'vitest';
+import {readFileSync} from 'node:fs';
+import * as T from 'three';
+import {cloneReelMaterial} from '../src/reel-scene';
+import {DURATION,INTRO_DURATION,LEGACY_DURATION,ITEM_DURATIONS,ITEM_STARTS,heroOpacity,ITEMS,advance,canExplore,frameAt} from '../src/reel-contract';
+describe('新黑白短片契約',()=>{
+ it('七秒裝配開場，介紹總長 30.167 秒保留',()=>{expect(INTRO_DURATION).toBe(7);expect(LEGACY_DURATION).toBeCloseTo(30.166666,5);expect(DURATION).toBeCloseTo(37.166666,5);});
+ it('沒有自動播放或初始片尾',()=>{const s={phase:'idle',time:0} as const;expect(advance(s,{type:'tick',delta:1})).toEqual(s);expect(canExplore(s)).toBe(false);});
+ it('播放用真實 delta，不沿用舊有限 tick 延長節奏',()=>expect(advance({phase:'playing',time:0},{type:'tick',delta:1}).time).toBe(1));
+ it('暫停保持時間',()=>expect(advance({phase:'paused',time:12},{type:'tick',delta:2}).time).toBe(12));
+ it('背景事件暫停',()=>expect(advance({phase:'playing',time:12},{type:'hidden'}).phase).toBe('paused'));
+ it('負數與非法 delta 不前進',()=>{for(const delta of [-1,NaN,Infinity])expect(advance({phase:'playing',time:1},{type:'tick',delta}).time).toBe(1);});
+ it('片尾精確停止且不自動重播',()=>{const s=advance({phase:'playing',time:DURATION-1},{type:'tick',delta:3});expect(s).toEqual({phase:'ended',time:DURATION});expect(canExplore(s)).toBe(true);expect(advance(s,{type:'play'})).toEqual(s);});
+ it('重播歸零且關閉導覽',()=>{const s=advance({phase:'ended',time:DURATION},{type:'restart'});expect(s.time).toBe(0);expect(canExplore(s)).toBe(false);});
+ it('八行目錄的三作品各三秒，其餘各兩秒',()=>{expect(ITEMS).toHaveLength(8);expect(ITEM_DURATIONS).toEqual([2,2,2,2,3,3,3,2]);for(let i=0;i<8;i++){expect(frameAt(INTRO_DURATION+ITEM_STARTS[i]).item).toBe(i);expect(frameAt(INTRO_DURATION+ITEM_STARTS[i]+ITEM_DURATIONS[i]-.001).item).toBe(i);}});
+ it('裝配結束即浮現主角文字，不再有三秒空檔',()=>{expect(heroOpacity(0)).toBe(0);expect(heroOpacity(.15)).toBeCloseTo(.5);expect(heroOpacity(.3)).toBe(1);expect(heroOpacity(0,true)).toBe(1);expect(frameAt(11.999).mode).toBe('hero');expect(frameAt(12).item).toBe(0);});
+ it('裝配、主角、摘要及收束邊界',()=>{expect(frameAt(0).mode).toBe('assembly');expect(frameAt(6.999).mode).toBe('assembly');expect(frameAt(7).mode).toBe('hero');expect(frameAt(7).wire).toBe(false);expect(frameAt(31).mode).toBe('summary');expect(frameAt(34).mode).toBe('end');expect(frameAt(NaN).mode).toBe('assembly');});
+ it('同時間同畫面且只有需要時顯示泵',()=>{expect(frameAt(13)).toEqual(frameAt(13));expect(frameAt(INTRO_DURATION+19).showPump).toBe(false);});
+ it('全片來源與互動隔離',()=>{const html=readFileSync('reel.html','utf8'),source=readFileSync('src/reel.ts','utf8');expect(html).toContain('id="ending" hidden');expect(html).toContain('<noscript>');expect(source).toContain("send({type:'pause'});dialog.showModal()");expect(source).not.toMatch(/8120|8130|8140|localStorage/);});
+ it('SVG 替代圖使用真實 hidden 屬性，避免疊在 3D 下方',()=>expect(readFileSync('src/reel.ts','utf8')).toContain("poster.setAttribute('hidden','')"));
+ it('保留水泵原色、金屬度、粗糙度及頂點色，線框不修改原素材',()=>{const source=new T.MeshStandardMaterial({color:0x174957,metalness:.93,roughness:.23,vertexColors:true});const clone=cloneReelMaterial(source) as T.MeshStandardMaterial;expect(clone).not.toBe(source);expect(clone.color.getHex()).toBe(0x174957);expect(clone.metalness).toBe(source.metalness);expect(clone.roughness).toBe(source.roughness);expect(clone.vertexColors).toBe(true);clone.wireframe=true;expect(source.wireframe).toBe(false);source.dispose();clone.dispose();});
+ it('金屬、青銅與感測器保留各自顏色，不套用灰階',()=>{for(const color of [0xc2c9cc,0xb88742,0xd89232]){const source=new T.MeshStandardMaterial({color});const clone=cloneReelMaterial(source) as T.MeshStandardMaterial;expect(clone.color.getHex()).toBe(color);source.dispose();clone.dispose();}});
+});

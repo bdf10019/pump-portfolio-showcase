@@ -1,0 +1,44 @@
+body{--slice-dwell:104svh;--slice-bridge:52svh;--curtain-shift:0%}
+.slice-advance{position:fixed;right:0;top:0;bottom:0;width:14px;z-index:50;pointer-events:none;background:#ec5b6414}
+.slice-advance>span{display:block;width:100%;height:100%;background:#ed5e68;transform:scaleY(var(--advance,0));transform-origin:top}
+.slice-advance[hidden],.no-js .slice-advance{display:none}
+@media(max-width:1099px),(max-height:699px){.slice-advance{display:none}}
+.candidate-nav{background:#050809f5}
+.candidate-nav .pump-brand{display:inline-flex;width:80px;height:48px;align-items:center;justify-content:flex-start;color:#5bd3e5;border-radius:3px;flex-shrink:0}
+.pump-brand img{display:block;width:72px;height:48px;object-fit:contain;transition:filter 160ms ease}
+.pump-brand:hover img,.pump-brand:focus-visible img{filter:brightness(1.2)}
+.scroll-slice{height:calc(var(--slice-dwell) + var(--slice-bridge))}
+.intro-curtain{visibility:visible;opacity:1;z-index:15;background:#050809;transform:translateY(var(--curtain-shift));padding:110px var(--gutter) 90px;display:flex;flex-direction:column;justify-content:center;will-change:transform;border-bottom:1px solid #29454b}
+.intro-inner{width:100%;max-width:1280px;margin:0 auto}
+.intro-curtain h1{font-size:clamp(38px,3.8vw,60px);max-width:1180px;line-height:1.15;margin:16px 0}
+.intro-curtain .intro-lead{margin:12px 0 24px}
+.intro-works{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;margin:24px 0 30px}
+.intro-work{border-top:1px solid #35535d;padding-top:16px}
+.intro-work .work-number{font-size:12px;color:#5bd3e5;letter-spacing:.13em}
+.intro-work h2{font-size:20px;line-height:1.45;letter-spacing:0;margin:10px 0}
+.intro-work p{margin:0;font-size:16px;line-height:1.75}
+.intro-bridge{max-width:1080px;color:#e4eff1!important;font-size:18px!important;line-height:1.7!important;margin-bottom:12px}
+.intro-curtain .scroll-hint{margin:14px 0 0}
+#hero.is-revealed .slice-copy{visibility:visible;opacity:1}
+.hero-copy h2{font-size:clamp(52px,5vw,86px)}
+.observation-copy{width:38vw}.observation-copy h2{font-size:clamp(34px,2.7vw,48px)}
+.observation-copy p:not(.eyebrow){line-height:1.85}.truth{font-size:12px;color:#97adb3}
+body[data-slice=intro] .candidate-notice{display:none}
+body[data-slice=intro] .slice-readout{z-index:22}
+body.is-fallback[data-scene=signals] .candidate-poster{left:32%;width:40vw;max-width:440px}
+.no-js .intro-curtain{transform:none;display:block;will-change:auto}
+@media(max-height:760px){.intro-curtain{padding-top:96px;padding-bottom:76px}.intro-curtain h1{font-size:38px;margin:12px 0}.intro-curtain .intro-lead{margin:10px 0 16px}.intro-works{gap:24px;margin:16px 0 20px}.intro-work h2{font-size:18px}.intro-work p{font-size:14px!important}.intro-bridge{font-size:16px!important}.intro-curtain .scroll-hint{font-size:14px!important;margin-top:10px}.observation-copy h2{font-size:32px}}
+@media(max-width:1099px),(max-height:699px){.scroll-slice{height:auto;min-height:60vh}.intro-curtain{transform:none!important;will-change:auto;display:block}.intro-works{grid-template-columns:1fr;gap:20px}.intro-curtain h1{font-size:36px}.hero-copy h2{font-size:40px}.observation-copy{width:100%}}
+/* A 0.4.0: copy remains separate from the model; only final links are interactive. */
+body[data-scene=signals] .candidate-shade{background:linear-gradient(90deg,transparent 38%,#05080980 61%,#050809f2 80%),linear-gradient(180deg,#05080955,transparent 30%,#05080980)}
+.observation-copy p:not(.eyebrow){color:#c1d0d4}
+.work-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;width:min(100%,1200px);margin:16px 0}
+.work-links a{align-self:stretch;padding:20px;border:1px solid #35535d;background:#071013;text-decoration:none;line-height:1.8}
+.work-links a:hover{border-color:#5bd3e5;background:#0c1a20}
+.work-links span,.work-links small{display:block}.work-links span{font-size:20px;color:#edf4f5}.work-links small{font-size:14px;color:#b1c6cd}
+footer .local-note{font-size:14px;max-width:900px}footer .legacy-link{font-size:14px;color:#97adb3}
+footer h2{font-size:24px;margin-bottom:0}
+/* Do not leave the last fixed scene behind the final navigation. Reversible on scroll. */
+body[data-in-footer=true] .scroll-slice .slice-copy,body[data-in-footer=true] .slice-readout,body[data-in-footer=true] .candidate-notice{visibility:hidden}
+body[data-in-footer=true] .visual-stage{opacity:0}
+@media(max-width:1099px),(max-height:699px){.work-links{grid-template-columns:1fr}}

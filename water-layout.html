@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>循環之內｜水路材質與燈光</title></head>
+<body>
+<header><div><span class="eyebrow">W3 · MATERIAL & LIGHT STUDY</span><h1>從一台水泵，延伸出完整水路。</h1></div><a href="http://127.0.0.1:4177/?v=0.3.6-d2-final">返回三幕展示</a></header>
+<main>
+<section class="stage" aria-label="水路材質旋轉預覽">
+  <canvas id="layout-canvas" aria-label="同一台水泵與閉式冷卻機組三維展示"></canvas>
+  <div class="edge-fade" aria-hidden="true"></div>
+  <div id="labels" aria-hidden="true"></div>
+  <div class="stage-caption"><span>02 / 閉式冷卻水機組</span><p>中央水泵 · 左側回水 · 右側換熱與供水</p></div>
+  <p id="status" role="status">正在載入配置灰模…</p>
+</section>
+<section class="controls" aria-label="旋轉包絡檢查">
+ <label>水平 <output id="yaw-value">0°</output><input id="yaw" aria-label="水平旋轉角度" type="range" min="-8" max="8" step="0.5" value="0"></label>
+ <label>垂直 <output id="pitch-value">0°</output><input id="pitch" aria-label="垂直旋轉角度" type="range" min="-4" max="4" step="0.5" value="0"></label>
+ <button id="reset" type="button">回到中心</button><button id="sweep" type="button">檢查全部角度</button>
+ <label class="toggle"><input id="follow" type="checkbox">滑鼠跟隨</label>
+ <label class="toggle"><input id="fade" type="checkbox" checked>邊緣淡化預覽</label>
+ <label class="toggle"><input id="detail" type="checkbox" checked>設備細節</label>
+ <label class="toggle"><input id="finish" type="checkbox" checked>PBR 材質與陰影</label>
+</section>
+<section class="reading">
+ <div><span class="eyebrow">目前檢查</span><h2>烤漆、金屬與橡膠，各自有質感。</h2><p>藍綠管路、灰紅膨脹桶與不鏽鋼板片，使用固定左上主光及右後輪廓光。可關閉材質、細節與淡化作比較；滑鼠只帶動有限角度，燈光不跟著旋轉。所有材質與儀表讀值均為合成示意，非製造規格。</p><p id="metrics" aria-live="polite">量測準備中</p><p id="sweep-result" aria-live="polite"></p></div>
+ <ol><li>回水隔離閥與過濾器</li><li>分離器、支管膨脹桶與入口直管</li><li>EQ-PUMP-001 水泵</li><li>止回／隔離閥與量測點</li><li>板式熱交換器與外部供水</li></ol>
+</section>
+<details open><summary>俯視配置與水流關係</summary>
+ <svg viewBox="0 0 1200 330" role="img" aria-label="回水經過濾及分離器到水泵，經閥件和換熱器送出；膨脹桶為支管，換熱器冷源側另接兩管">
+ <defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#63cfdf"/></marker></defs>
+ <g fill="none" stroke="#63cfdf" stroke-width="3" marker-end="url(#arrow)"><path d="M30 130H135"/><path d="M215 130H275"/><path d="M365 130H445"/><path d="M535 130H645"/><path d="M755 130H825"/><path d="M915 130H990"/><path d="M1080 130H1180"/></g>
+ <g fill="#13242b" stroke="#597078"><rect x="135" y="100" width="80" height="60"/><rect x="275" y="100" width="90" height="60"/><rect x="445" y="100" width="90" height="60"/><rect x="645" y="90" width="110" height="80"/><rect x="825" y="100" width="90" height="60"/><rect x="990" y="85" width="90" height="100"/><rect x="500" y="235" width="100" height="55"/></g>
+ <g fill="#d6e5e6" font-size="17" text-anchor="middle"><text x="70" y="95">外部回水</text><text x="175" y="136">隔離閥</text><text x="320" y="136">過濾器</text><text x="490" y="136">分離器</text><text x="700" y="136">中央水泵</text><text x="870" y="136">閥件儀表</text><text x="1035" y="130">板式</text><text x="1035" y="153">換熱器</text><text x="550" y="269">膨脹桶</text><text x="1130" y="165">外部供水</text></g>
+ <path d="M550 130V235" fill="none" stroke="#bca294" stroke-width="3"/><g fill="#9cb5bb" font-size="14"><text x="555" y="204">支管 · 非主流串接</text><text x="550" y="112">入口直管</text></g>
+ <path d="M1020 85V35H1170M1055 85V60H1170" fill="none" stroke="#7996bc" stroke-width="3"/><text x="895" y="45" fill="#a4b9d1" font-size="15">冷源側兩管 · 與製程水隔離</text>
+ </svg><p>外部負載在畫面之外把供水接回回水；冷源側為獨立回路。此圖為自製展示配置，未指定施工尺寸或運轉參數。</p>
+</details>
+<footer>W3 材質、燈光與淡化預覽 · 自製合成展示，非製造圖、流體模擬或安全認證 · 尚未整合正式三幕。</footer>
+</main><script type="module" src="/src/water-layout.ts"></script></body></html>

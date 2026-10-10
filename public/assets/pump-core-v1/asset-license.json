@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "portfolio-asset-license-v1",
+  "assetId": "PUMP-CORE-ASSET-01",
+  "createdBy": "local procedural Three.js source",
+  "externalGenerationService": null,
+  "externalUploads": false,
+  "sourceRights": "original project asset",
+  "publicPortfolioUse": true,
+  "thirdPartyRuntime": {
+    "name": "three",
+    "version": "0.186.0",
+    "license": "MIT",
+    "homepage": "https://threejs.org/"
+  },
+  "limitations": [
+    "Illustrative model only; not a manufacturing drawing.",
+    "Does not represent a specific pump manufacturer or model.",
+    "Does not provide maintenance or safety instructions."
+  ]
+}

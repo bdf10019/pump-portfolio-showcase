@@ -1,0 +1,35 @@
+{
+  "name": "pump-portfolio-entry",
+  "version": "0.3.7",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:material": "tsc --noEmit && vite build --config vite.honeycomb.config.ts",
+    "preview:material": "vite preview --config vite.honeycomb.config.ts",
+    "build:reel": "tsc --noEmit && vite build --config vite.reel.config.ts",
+    "preview:reel": "vite preview --config vite.reel.config.ts",
+    "build:intro": "tsc --noEmit && vite build --config vite.intro.config.ts",
+    "preview:intro": "vite preview --config vite.intro.config.ts",
+    "build:scroll": "tsc --noEmit && vite build --config vite.scroll.config.ts",
+    "preview:scroll": "vite preview --config vite.scroll.config.ts",
+    "build:water": "tsc --noEmit && vite build --config vite.water.config.ts",
+    "preview:water": "vite preview --config vite.water.config.ts",
+    "dev": "vite --host 127.0.0.1 --port 4177 --strictPort",
+    "build": "tsc --noEmit && vite build",
+    "build:m1": "tsc --noEmit && vite build --config vite.m1.config.ts",
+    "preview:m1": "vite preview --config vite.m1.config.ts --host 127.0.0.1 --port 4176 --strictPort",
+    "asset:glb": "node --experimental-strip-types scripts/export-glb.ts",
+    "preview": "vite preview --host 127.0.0.1 --port 4177 --strictPort",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "three": "0.186.0"
+  },
+  "devDependencies": {
+    "@types/node": "26.5.1",
+    "@types/three": "0.185.4",
+    "typescript": "7.0.2",
+    "vite": "8.3.0",
+    "vitest": "5.0.0"
+  }
+}

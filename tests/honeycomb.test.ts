@@ -1,0 +1,24 @@
+import {describe,it,expect} from 'vitest';
+import {readFileSync} from 'node:fs';
+import {hexPoints,influence,lightsAt,rasterSize,restart,tick,BASE_PASS_SECONDS,SWEEP_SECONDS,LIGHT_SPEED_MULTIPLIER} from '../src/honeycomb-material';
+describe('獨立蜂窩材質樣片',()=>{
+ it('六角板頂點等距並閉合成規律蜂窩',()=>{const p=hexPoints(40,50,34);expect(p).toHaveLength(6);p.forEach(q=>expect(Math.hypot(q.x-40,q.y-50)).toBeCloseTo(34));expect(p[0].y).toBeCloseTo(16);});
+ it('光源同時間可重建，不依滑鼠位置',()=>expect(lightsAt(12,1536,838)).toEqual(lightsAt(12,1536,838)));
+ it('光源確實隨時間移動',()=>expect(lightsAt(25,1536,838)).not.toEqual(lightsAt(0,1536,838)));
+ it('長時間光源在預留的畫面外折返範圍內且半徑為正',()=>{for(let t=0;t<500;t+=7){for(const l of lightsAt(t,1536,838)){expect(l.x).toBeGreaterThanOrEqual(-l.radius);expect(l.x).toBeLessThanOrEqual(1536+l.radius);expect(l.y).toBeGreaterThan(0);expect(l.y).toBeLessThan(838);expect(l.radius).toBeGreaterThan(0);}}});
+ it('全程只有一束主光源',()=>{for(const t of [0,5,15,30,1000])expect(lightsAt(t,1536,838)).toHaveLength(1);});
+ it('照亮半徑相對舊主光源放大 1.2 倍，亮度不加倍',()=>{const l=lightsAt(0,1536,838)[0];expect(l.radius).toBeCloseTo(838*.39*1.2);expect(l.strength).toBe(1);});
+ it('固定畫面中線，沒有上下漂移',()=>{for(let t=0;t<100;t+=3)expect(lightsAt(t,1536,838)[0].y).toBe(419);});
+ it('左右穿出畫面外一個光源半徑後折返，往返連續',()=>{const w=1536,h=838,r=lightsAt(0,w,h)[0].radius;expect(lightsAt(0,w,h)[0].x).toBeCloseTo(w/2);expect(lightsAt(SWEEP_SECONDS/4,w,h)[0].x).toBeCloseTo(w+r);expect(lightsAt(SWEEP_SECONDS/2,w,h)[0].x).toBeCloseTo(w/2);expect(lightsAt(SWEEP_SECONDS*3/4,w,h)[0].x).toBeCloseTo(-r);expect(lightsAt(SWEEP_SECONDS,w,h)[0].x).toBeCloseTo(w/2);expect(lightsAt(SWEEP_SECONDS/4+.1,w,h)[0].x).toBeLessThan(w+r);});
+ it('同一完整橫移路徑速度倍率 1.2，單程時間除以 1.2',()=>{const first=lightsAt(0,1536,838)[0],next=lightsAt(1,1536,838)[0];expect(LIGHT_SPEED_MULTIPLIER).toBe(1.2);expect(SWEEP_SECONDS/2).toBeCloseTo(BASE_PASS_SECONDS/1.2);expect(next.x-first.x).toBeCloseTo((1536+2*first.radius)/BASE_PASS_SECONDS*1.2);});
+ it('距離越遠影響越低',()=>{expect(influence(0,100)).toBe(1);expect(influence(25,100)).toBeGreaterThan(influence(50,100));expect(influence(50,100)).toBeGreaterThan(influence(100,100));});
+ it('非法距離與時間安全處理',()=>{expect(influence(NaN,20)).toBe(0);expect(influence(1,0)).toBe(0);expect(lightsAt(NaN,0,Infinity)).toEqual(lightsAt(0,1,1));});
+ it('暫停時間不變，重播歸零',()=>{expect(tick({time:14,playing:false},1)).toEqual({time:14,playing:false});expect(restart(false)).toEqual({time:0,playing:true});});
+ it('降低動態重播保持固定光',()=>expect(restart(true)).toEqual({time:0,playing:false}));
+ it('非法增量不前進，長幀有界',()=>{for(const n of [NaN,Infinity,-1,0])expect(tick({time:2,playing:true},n).time).toBe(2);expect(tick({time:2,playing:true},30).time).toBe(2.25);});
+ it('高解析度限制畫布面積及 DPR',()=>{const size=rasterSize(3840,2160,3);expect(size.width).toBeLessThanOrEqual(1920);expect(size.height).toBeLessThanOrEqual(1080);expect(rasterSize(1280,720,3).ratio).toBe(1.5);});
+ it('非法尺寸不產生零尺寸畫布',()=>{const size=rasterSize(NaN,0,-1);expect(size.width).toBeGreaterThan(0);expect(size.height).toBeGreaterThan(0);});
+ it('背景入口與正式 B 分離，無產品 API、遠端資源或滑鼠控制',()=>{const source=readFileSync('src/honeycomb.ts','utf8'),html=readFileSync('honeycomb.html','utf8'),config=readFileSync('vite.honeycomb.config.ts','utf8');expect(html).toContain('獨立背景樣片，尚未接入 B');expect(source).not.toMatch(/fetch\(|8120|8130|8140|pointermove|mousemove|localStorage/);expect(config).toContain("outDir:'dist-honeycomb'");expect(config).toContain('copyPublicDir:false');});
+ it('光層採縫隙遮罩，表面邊緣只受少量反光',()=>{const source=readFileSync('src/honeycomb-material.ts','utf8');expect(source).toContain("lightCtx.globalCompositeOperation='destination-in'");expect(source).toContain('ctx.globalAlpha=.2');expect(source).toContain('ctx.drawImage(surface,0,0)');});
+ it('背景事件停光，不自動續播，離開釋放快取',()=>{const source=readFileSync('src/honeycomb.ts','utf8');expect(source).toContain("if(document.hidden){clock={...clock,playing:false};schedule();}");expect(source).toContain('surface?.dispose()');});
+});

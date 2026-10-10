@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "pump-core-parts-v1",
+  "assetId": "PUMP-CORE-ASSET-01",
+  "subject": "EQ-PUMP-001",
+  "units": "meters",
+  "axes": {
+    "up": "+Y",
+    "shaft": "+X",
+    "front": "+Z"
+  },
+  "truthStatus": "illustrative-procedural-model",
+  "parts": [
+    {
+      "id": "volute",
+      "label": "泵殼",
+      "function": "包覆葉輪並引導水流進出。",
+      "signal": "與流路和泵浦本體相關；本案例不宣稱泵殼故障。",
+      "truth": "展示用簡化結構，不代表真實尺寸與公差。",
+      "explode": [-1.25, 0.05, 0]
+    },
+    {
+      "id": "impeller",
+      "label": "葉輪",
+      "function": "把旋轉動能傳遞給循環水流。",
+      "signal": "不平衡可能與振動有關，但本案例尚未完成故障確認。",
+      "truth": "葉片數量與角度只服務視覺說明。",
+      "explode": [-0.72, 0.1, 0]
+    },
+    {
+      "id": "shaft",
+      "label": "主軸",
+      "function": "把馬達扭矩傳到葉輪。",
+      "signal": "用來說明振動如何沿軸系傳遞。",
+      "truth": "不是軸徑、材質或配合公差規格。",
+      "explode": [0, 0.95, 0]
+    },
+    {
+      "id": "bearing_front",
+      "label": "前軸承",
+      "function": "支撐靠近泵殼端的主軸。",
+      "signal": "對應軸承溫度偏高的觀察位置之一。",
+      "truth": "溫度偏高不等於已確認軸承損壞。",
+      "explode": [-0.12, 0.32, 0.82]
+    },
+    {
+      "id": "bearing_rear",
+      "label": "後軸承",
+      "function": "支撐靠近聯軸器端的主軸。",
+      "signal": "可作為振動與溫度複核位置。",
+      "truth": "量測位置是展示配置，不是現場作業指令。",
+      "explode": [0.16, 0.32, -0.82]
+    },
+    {
+      "id": "mechanical_seal",
+      "label": "機械軸封",
+      "function": "限制軸穿過泵殼處的流體外洩。",
+      "signal": "案例明確為未發現洩漏。",
+      "truth": "不以濕潤、裂痕或滴漏材質暗示未發生事件。",
+      "explode": [-0.34, -0.42, 0.72]
+    },
+    {
+      "id": "coupling",
+      "label": "聯軸器",
+      "function": "連接馬達軸與泵浦軸系。",
+      "signal": "對心狀態可能影響振動，需要人工檢查。",
+      "truth": "不宣稱本案例已發現偏心或鬆動。",
+      "explode": [0.55, 0.08, 0.82]
+    },
+    {
+      "id": "motor",
+      "label": "馬達",
+      "function": "提供循環水泵的旋轉動力。",
+      "signal": "案例未發現火花或焦味。",
+      "truth": "不繪製冒煙、火花或燒焦表面。",
+      "explode": [1.28, 0.06, 0]
+    },
+    {
+      "id": "baseplate",
+      "label": "底座",
+      "function": "固定並對齊泵浦與馬達總成。",
+      "signal": "提供振動傳遞與安裝關係的視覺脈絡。",
+      "truth": "螺栓位置與尺寸只是示意。",
+      "explode": [0, -0.68, 0]
+    },
+    {
+      "id": "sensor_vibration",
+      "label": "振動感測器",
+      "function": "表示振動觀察的資料來源。",
+      "signal": "目前案例為高負載下持續震動。",
+      "truth": "沒有模擬真實頻譜、門檻或即時資料。",
+      "explode": [0.1, 0.85, 0.68]
+    },
+    {
+      "id": "sensor_temperature",
+      "label": "溫度感測器",
+      "function": "表示軸承溫度觀察的資料來源。",
+      "signal": "目前案例為軸承溫度偏高。",
+      "truth": "沒有顯示真實溫度數字或安全閾值。",
+      "explode": [0.1, 0.85, -0.68]
+    }
+  ]
+}

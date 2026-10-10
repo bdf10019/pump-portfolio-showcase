@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-Hant" class="no-js">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#050809"><title>循環之內｜全捲動拆解候選</title><script>document.documentElement.classList.remove('no-js');</script></head>
+<body data-version="0.3.8-candidate" data-scene="opening" data-slice="hero" data-render-mode="poster">
+ <a class="skip-link" href="#content">跳到故事內容</a>
+ <header class="candidate-nav"><a href="#hero">循環之內</a><div><span id="status" role="status">載入中</span><button id="motion" type="button" aria-pressed="false">減少動態</button><a href="http://127.0.0.1:4177/viewer.html">模型工作台</a></div></header>
+ <div id="visual-stage" class="visual-stage"><div id="poster" class="candidate-poster" role="img" aria-label="循環水泵靜態示意"><span>EQ-PUMP-001</span><strong>循環水泵</strong><p>3D 不可用時，仍可上下捲動閱讀全部七片。</p></div><canvas id="story-canvas" aria-label="由捲動位置決定的循環水泵 3D 舞台"></canvas><div class="candidate-shade"></div><div class="water-edge-fade"></div></div>
+ <aside class="slice-readout" aria-label="目前閱讀進度"><span id="slice-label">01</span><span id="slice-title">主角</span><span id="slice-count">1 / 7</span></aside>
+ <p class="candidate-notice">候選展示 · 觀察高亮不等於確診故障</p>
+ <main id="content" tabindex="-1">
+  <article id="opening" aria-label="01 主角">
+   <section id="hero" data-slice="hero" class="scroll-slice is-active" aria-labelledby="hero-title"><div class="slice-copy hero-copy"><p class="eyebrow">01 · 主角</p><h1 id="hero-title">一台水泵，<br>貫穿整個流程。</h1><p>先認識主角，再沿水路走一圈，最後核對它留下的觀察。</p><span class="truth">EQ-PUMP-001 · 自製合成示意</span><p class="scroll-hint">往下捲動，下一片就在下方。</p></div></section>
+  </article>
+  <article id="system" aria-label="02 水路">
+   <section id="loop-overview" data-slice="loop-overview" class="scroll-slice" aria-labelledby="overview-title"><div class="slice-copy water-copy"><p class="eyebrow">02-1 · 水路總覽</p><h2 id="overview-title">先看完整水路。</h2><div class="water-caption"><strong>同一台水泵，連接閉式機組。</strong><p>左側回水進泵，右側經換熱器供水。灰紅膨脹桶是支管，冷源另成回路。</p><span class="truth">設備關係示意 · 非工程配置認證</span></div></div></section>
+   <section id="loop-supply" data-slice="loop-supply" class="scroll-slice" aria-labelledby="supply-title"><div class="slice-copy water-copy"><p class="eyebrow">02-2 · 供水</p><h2 id="supply-title">沿著供水，往負載走。</h2><div class="water-caption"><strong>從泵排出口到板式換熱器。</strong><p>青色方向線經止回／隔離閥、換熱器到畫面外負載；冷源水不與製程水混合。</p><span class="truth">流向示意 · 非流體模擬</span></div></div></section>
+   <section id="loop-return" data-slice="loop-return" class="scroll-slice" aria-labelledby="return-title"><div class="slice-copy water-copy"><p class="eyebrow">02-3 · 回水</p><h2 id="return-title">沿著回水，回到主角。</h2><div class="water-caption"><strong>外部回水回到泵入口。</strong><p>藍色方向線經閥件、過濾器與分離器返回。畫面外負載完成閉環，接著鏡頭回到水泵。</p><span class="truth">機組局部 · 非設備控制</span></div></div></section>
+  </article>
+  <article id="signals" aria-label="03 異常觀察">
+   <section id="observe-vibration" data-slice="observe-vibration" class="scroll-slice" aria-labelledby="vibration-title"><div class="slice-copy observation-copy"><p class="eyebrow">03-1 · 合成觀察</p><h2 id="vibration-title">持續震動</h2><p>拆開主角，先找振動資料來源，再看軸系關係。</p><p class="observation-detail">觀察組：振動感測器、前後軸承。主軸與聯軸器提供脈絡，不表示已確認損壞。</p><span class="truth">柔和琥珀：待複核觀察組 · 深色：結構脈絡</span><ul class="part-context"><li>振動感測器：資料來源</li><li>前後軸承：待複核位置</li><li>主軸／聯軸器：軸系脈絡</li></ul></div></section>
+   <section id="observe-temperature" data-slice="observe-temperature" class="scroll-slice" aria-labelledby="temperature-title"><div class="slice-copy observation-copy"><p class="eyebrow">03-2 · 合成觀察</p><h2 id="temperature-title">軸承溫度偏高</h2><p>保持拆解，只更換觀察焦點，仍是同一台水泵。</p><p class="observation-detail">對照溫度感測器與前後軸承，還需結合負載、趨勢與歷史；不能判定哪顆軸承已損壞。</p><span class="truth">感測器接替高亮 · 前後軸承是觀察組，不是確診組</span><ul class="part-context"><li>溫度感測器：資料來源</li><li>前後軸承：觀察組而非確診組</li></ul></div></section>
+   <section id="observe-safety" data-slice="observe-safety" class="scroll-slice" aria-labelledby="safety-title"><div class="slice-copy observation-copy"><p class="eyebrow">03-3 · 否定安全觀察</p><h2 id="safety-title">未發現危害跡象</h2><p>停止警示、逐步收攏。不把沒有發生的事故畫出來。</p><p class="observation-detail">機械軸封與馬達提供觀察脈絡；未發現不等於證實安全，也不能排除所有危害。</p><span class="truth">恢復自然材質 · 本片不設故障高亮</span><ul class="part-context"><li>機械軸封：未發現洩漏</li><li>馬達：未發現火花／焦味</li></ul></div></section>
+  </article>
+ </main>
+ <footer><strong>到這裡，七個切片已讀完。</strong><p>這是全捲動拆解候選，尚未替換活動版。合成觀察不是診斷、維修程序或安全認證。</p><a href="http://127.0.0.1:4177/?v=0.3.7">回到 v0.3.7 活動版</a></footer>
+ <noscript><p class="nojs-note">JavaScript 未啟用：以下保留七片完整文字與零件清單，3D 與動態切換不執行。</p></noscript>
+ <script type="module" src="/src/scroll-story.ts"></script>
+</body></html>

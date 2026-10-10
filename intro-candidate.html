@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-Hant" class="no-js">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#050809"><title>循環之內｜三作品互動介紹</title></head>
+<body data-version="0.4.0" data-release="formal-local-desktop" data-scene="opening" data-slice="intro" data-render-mode="poster">
+ <a class="skip-link" href="#content">跳到故事內容</a>
+ <header class="candidate-nav"><a class="pump-brand" href="#intro" aria-label="循環之內：返回三作品介紹" title="循環之內｜循環水泵"><img src="/assets/pump-brand.svg" width="72" height="48" alt="" decoding="async"></a><div><span id="status" role="status">載入中</span><button id="motion" type="button" aria-pressed="false">減少動態</button><a href="http://127.0.0.1:4177/viewer.html">模型工作台</a></div></header>
+ <div id="visual-stage" class="visual-stage"><div id="poster" class="candidate-poster" role="img" aria-label="循環水泵靜態示意"><span>EQ-PUMP-001</span><strong>循環水泵</strong><p>3D 不可用時，仍可上下捲動閱讀全部八片。</p></div><canvas id="story-canvas" aria-label="由捲動位置決定的循環水泵 3D 舞台"></canvas><div class="candidate-shade"></div><div class="water-edge-fade"></div></div>
+ <aside class="slice-readout" aria-label="目前閱讀進度"><span id="slice-label">00</span><span id="slice-title">三個作品，先說清楚。</span><span id="slice-count">1 / 8</span></aside>
+ <div id="slice-advance" class="slice-advance" role="progressbar" aria-label="距離下一片的捲動進度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+ <p class="candidate-notice">桌機本機正式版 · 高亮是觀察焦點，不是故障確診</p>
+ <main id="content" tabindex="-1">
+  <article id="introduction" aria-label="00 三個作品">
+   <section id="intro" data-slice="intro" class="scroll-slice is-active" aria-labelledby="intro-title"><div class="slice-copy intro-curtain"><div class="intro-inner">
+    <p class="eyebrow">00 · 三個作品，先說清楚</p><h1 id="intro-title">讓 AI 的判斷，變成<br>可確認、可執行、可追查的工作。</h1>
+    <p class="intro-lead">我們製作了三個作品，分別處理判斷、執行與文件整理。</p>
+    <div class="intro-works">
+     <div class="intro-work"><span class="work-number">作品一 · 判斷資訊</span><h2>AI 模型服務與 MLOps</h2><p>管理模型、測試回答品質，協助判讀資訊與風險，並保留結果供人複核。</p></div>
+     <div class="intro-work"><span class="work-number">作品二 · 核准執行</span><h2>MCP 工具整合與授權治理</h2><p>讓 AI 使用查詢與工單工具；執行變更前，先檢查權限與人工核准。</p></div>
+     <div class="intro-work"><span class="work-number">作品三 · 整理文件</span><h2>多模態文件理解與人工複核</h2><p>從文件與圖片提取資訊，讓人對照來源、修正內容，再匯出整理結果。</p></div>
+    </div>
+    <p class="intro-bridge">接下來，用一台循環水泵，把這三件事說清楚：<br>判斷異常、安排處理、整理維修文件。</p>
+    <span class="truth">合成情境展示；三個作品獨立運作，不控制真實設備。</span><p class="scroll-hint">往下捲動，從這台水泵開始。</p>
+   </div></div></section>
+  </article>
+  <article id="opening" aria-label="01 共同主角">
+   <section id="hero" data-slice="hero" class="scroll-slice" aria-labelledby="hero-title"><div class="slice-copy hero-copy"><p class="eyebrow">01 · 共同主角</p><h2 id="hero-title">同一台水泵，<br>三種工作。</h2><p>這台循環水泵是三個作品共同的示範對象。它出現異常時，我們需要判讀訊號、安排檢查，再整理維修紀錄。</p><span class="truth">EQ-PUMP-001 · 自製合成示意</span><p class="scroll-hint">先看它如何運作，再看異常來自哪裡。</p></div></section>
+  </article>
+  <article id="system" aria-label="02 理解循環水路">
+   <section id="loop-overview" data-slice="loop-overview" class="scroll-slice" aria-labelledby="overview-title"><div class="slice-copy water-copy"><p class="eyebrow">02-1 · 理解運作</p><h2 id="overview-title">水泵，讓水持續循環。</h2><div class="water-caption"><strong>送出去，再回到入口。</strong><p>水從入口進入水泵，再被送往需要換熱的設備。用過的水沿回水管路返回，形成循環。</p><span class="truth">局部水路示意 · 非工程配置或流體模擬</span></div></div></section>
+   <section id="loop-supply" data-slice="loop-supply" class="scroll-slice" aria-labelledby="supply-title"><div class="slice-copy water-copy"><p class="eyebrow">02-2 · 供水</p><h2 id="supply-title">把水送出去，帶走熱量。</h2><div class="water-caption"><strong>水泵把水送往設備。</strong><p>沿青色方向看，水從水泵排出口經閥件與換熱器，送往畫面外的設備。換熱器傳遞熱量，但兩側的水不直接混合。</p><span class="truth">方向線只表示流向 · 不代表實測速度</span></div></div></section>
+   <section id="loop-return" data-slice="loop-return" class="scroll-slice" aria-labelledby="return-title"><div class="slice-copy water-copy"><p class="eyebrow">02-3 · 回水</p><h2 id="return-title">用過的水，回到水泵。</h2><div class="water-caption"><strong>下一次循環，從這裡開始。</strong><p>回水經過閥件、過濾器與分離器，再回到水泵入口。理解這條路，才能知道異常觀察發生在哪個位置。</p><span class="truth">機組局部示意 · 不控制任何真實設備</span></div></div></section>
+  </article>
+  <article id="signals" aria-label="03 理解異常觀察">
+   <section id="observe-vibration" data-slice="observe-vibration" class="scroll-slice" aria-labelledby="vibration-title"><div class="slice-copy observation-copy"><p class="eyebrow">03-1 · 震動觀察</p><h2 id="vibration-title">震動持續，<br>先找資料來源。</h2><p>亮起的振動感測器提供觀察資料，前後軸承是需要檢查的相關位置。</p><p class="observation-detail">震動也可能有其他原因，不能只靠這個訊號判定零件損壞。</p><span class="truth">高亮是觀察焦點，不是故障確診</span><ul class="part-context"><li>振動感測器：資料來源</li><li>前後軸承：待查位置</li><li>主軸／聯軸器：軸系脈絡</li></ul></div></section>
+   <section id="observe-temperature" data-slice="observe-temperature" class="scroll-slice" aria-labelledby="temperature-title"><div class="slice-copy observation-copy"><p class="eyebrow">03-2 · 溫度觀察</p><h2 id="temperature-title">溫度偏高，<br>再看運轉條件。</h2><p>現在對照溫度感測器與前後軸承。</p><p class="observation-detail">還要結合負載、變化趨勢與歷史紀錄，才能決定接下來如何檢查。</p><span class="truth">合成觀察 · 仍需人工判讀與核實</span><ul class="part-context"><li>溫度感測器：資料來源</li><li>前後軸承：待查位置，而非確診故障</li></ul></div></section>
+   <section id="observe-safety" data-slice="observe-safety" class="scroll-slice" aria-labelledby="safety-title"><div class="slice-copy observation-copy"><p class="eyebrow">03-3 · 確認觀察</p><h2 id="safety-title">未發現危害，<br>仍需確認狀態。</h2><p>目前的紀錄顯示：未發現洩漏、火花或焦味。這是當下的觀察，不代表已確認安全。</p><p class="observation-detail">作品一協助判讀；需要處理時，作品二經核准執行，作品三整理檢查與維修文件。</p><span class="truth">合成情境 · 三作品獨立運作 · 不替代現場檢查</span><ul class="part-context"><li>機械軸封：未發現洩漏</li><li>馬達：未發現火花／焦味</li></ul></div></section>
+  </article>
+ </main>
+ <footer><strong>判斷資訊、核准執行、整理文件。</strong><p>我們用同一台水泵說明三種工作。這是合成情境，三個作品各自運作，不代表已自動串接，也不是維修程序或安全認證。</p><h2 id="more-title">了解更多</h2><nav class="work-links" aria-labelledby="more-title"><a href="http://127.0.0.1:4178/"><span>作品一 · 判斷資訊</span><small>AI 模型服務與 MLOps</small></a><a href="http://127.0.0.1:4179/"><span>作品二 · 核准執行</span><small>MCP 工具整合與授權治理</small></a><a href="http://127.0.0.1:4180/"><span>作品三 · 整理文件</span><small>多模態文件理解與人工複核</small></a></nav><p class="local-note">以上是本機介紹站，需要先啟動；不會連線到產品控制台，也不會操作設備。</p><a class="legacy-link" href="http://127.0.0.1:4177/?v=0.3.7">回到活動版</a></footer>
+ <noscript><p class="nojs-note">JavaScript 未啟用：保留三作品介紹、八片文字與零件清單，不執行 3D 或布幕動畫。</p></noscript>
+ <script type="module" src="/src/intro-story.ts"></script>
+</body></html>

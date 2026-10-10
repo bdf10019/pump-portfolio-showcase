@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-Hant" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#070b0c" />
+    <meta name="description" content="循環水泵 v0.3.0 多參考影片強化計畫的 M1 三張視覺證明。" />
+    <title>M1 視覺證明｜循環之內</title>
+    <script>document.documentElement.classList.remove("no-js");</script>
+  </head>
+  <body class="proof-page" data-proof="hero">
+    <a class="skip-link" href="#proof-content">跳到視覺證明</a>
+
+    <header class="proof-nav" aria-label="M1 視覺證明導覽">
+      <div class="proof-brand">
+        <span class="proof-brand__mark" aria-hidden="true"></span>
+        <span>循環之內</span>
+        <small>M1 視覺證明</small>
+      </div>
+
+      <div class="proof-tabs" role="tablist" aria-label="切換視覺證明">
+        <button type="button" role="tab" aria-selected="true" data-proof-target="hero"><span>01</span>桌機首屏</button>
+        <button type="button" role="tab" aria-selected="false" data-proof-target="system"><span>02</span>水路總覽</button>
+        <button type="button" role="tab" aria-selected="false" data-proof-target="mobile"><span>03</span>手機構圖</button>
+      </div>
+
+      <div class="proof-actions">
+        <span id="proof-render-status" class="proof-render-status" aria-live="polite">海報模式</span>
+        <button id="proof-motion-toggle" class="proof-motion-toggle" type="button" aria-pressed="false">減少動態</button>
+        <a href="/?v=0.3.0-final">返回 v0.3.0</a>
+      </div>
+    </header>
+
+    <main id="proof-content" class="proof-stage" tabindex="-1">
+      <div id="proof-visual" class="proof-visual" aria-label="共用同一台循環水泵的視覺證明舞台">
+        <div id="proof-poster" class="proof-poster" role="img" aria-label="循環水泵與閉式水路的靜態替代圖">
+          <svg viewBox="0 0 1200 760" aria-hidden="true">
+            <path class="proof-poster__loop" d="M170 378V146H954V612H286V378H460" />
+            <path class="proof-poster__flow" d="M170 378V146H954V612H286V378H460" />
+            <circle cx="170" cy="378" r="68" />
+            <rect x="920" y="296" width="68" height="164" rx="16" />
+          </svg>
+          <div class="proof-poster__pump" aria-hidden="true">
+            <span class="proof-poster__volute"></span>
+            <span class="proof-poster__shaft"></span>
+            <span class="proof-poster__motor"></span>
+            <span class="proof-poster__base"></span>
+          </div>
+        </div>
+        <canvas id="proof-canvas" aria-label="三個證明共用的循環水泵 3D 場景"></canvas>
+        <div class="proof-light proof-light--key" aria-hidden="true"></div>
+        <div class="proof-light proof-light--rim" aria-hidden="true"></div>
+        <div class="proof-grain" aria-hidden="true"></div>
+      </div>
+
+      <section class="proof-frame proof-frame--hero" data-proof-panel="hero" aria-labelledby="hero-proof-title">
+        <div class="hero-copy">
+          <p class="proof-kicker">PERSISTENT SUBJECT · 01</p>
+          <h1 id="hero-proof-title">一台水泵，<br /><span>貫穿整個流程。</span></h1>
+          <p class="hero-lead">先辨識主角，再理解它所在的系統與留下的訊號。三幕只改變視角與意義，不更換設備。</p>
+          <div class="hero-meta" aria-label="展示邊界">
+            <span>EQ-PUMP-001</span>
+            <span>自製 3D 示意模型</span>
+          </div>
+        </div>
+
+        <div class="subject-index" aria-hidden="true">
+          <span>01</span>
+          <p>同一主角<br />三個視角</p>
+        </div>
+
+        <div class="subject-label">
+          <span aria-hidden="true"></span>
+          <p><strong>循環水泵核心總成</strong><small>泵殼 · 軸系 · 馬達 · 感測位置</small></p>
+        </div>
+      </section>
+
+      <section class="proof-frame proof-frame--system" data-proof-panel="system" aria-labelledby="system-proof-title" aria-hidden="true">
+        <div class="system-heading">
+          <p class="proof-kicker">ENVIRONMENTAL ROUTE · 02</p>
+          <h2 id="system-proof-title">先找到水泵，<br />再沿著回路走一圈。</h2>
+        </div>
+
+        <div class="route-card">
+          <p class="route-card__eyebrow">CLOSED LOOP / 合成示意</p>
+          <ol class="route-list">
+            <li class="is-active"><span>01</span><strong>水箱</strong><small>回路起點與終點</small></li>
+            <li><span>02</span><strong>水泵</strong><small>推動循環的主角</small></li>
+            <li><span>03</span><strong>換熱設備</strong><small>系統中的負載端</small></li>
+            <li><span>04</span><strong>回水</strong><small>沿路徑返回起點</small></li>
+          </ol>
+          <div class="route-key">
+            <span><i class="route-key__flow"></i>示意流向</span>
+            <span><i class="route-key__observe"></i>觀察位置</span>
+          </div>
+          <p class="route-note">只表示設備關係與方向，不是流體模擬、工程管徑或控制畫面。</p>
+        </div>
+
+        <div class="route-axis" aria-hidden="true"><span>SUPPLY</span><i></i><span>RETURN</span></div>
+      </section>
+
+      <section class="proof-frame proof-frame--mobile" data-proof-panel="mobile" aria-labelledby="mobile-proof-title" aria-hidden="true">
+        <div class="mobile-proof-copy">
+          <p class="proof-kicker">RESPONSIVE EVIDENCE · 03</p>
+          <h2 id="mobile-proof-title">手機不是縮小桌機，<br />而是重新安排閱讀順序。</h2>
+          <p>主角、訊號、真實性與主要動作都保留；滑鼠跟隨與長距離轉場則退出。</p>
+        </div>
+
+        <div class="phone-stage" aria-label="390 × 844 手機構圖證明">
+          <div class="phone-topbar"><span aria-hidden="true"></span><strong>循環之內</strong><small>03 / 03</small></div>
+          <div class="phone-subject" aria-hidden="true">
+            <span class="phone-subject__ring"></span>
+            <span class="phone-subject__motor"></span>
+            <span class="phone-subject__line"></span>
+          </div>
+          <div class="phone-content">
+            <p class="phone-kicker">OBSERVATION</p>
+            <h3>異常不是<br />單一數字。</h3>
+            <div class="phone-signals" role="group" aria-label="手機訊號構圖">
+              <button type="button" class="is-active" data-mobile-signal="vibration" aria-pressed="true"><span>01</span><strong>持續震動</strong></button>
+              <button type="button" data-mobile-signal="temperature" aria-pressed="false"><span>02</span><strong>軸承溫度偏高</strong></button>
+              <button type="button" data-mobile-signal="safety" aria-pressed="false"><span>03</span><strong>未發現危害跡象</strong></button>
+            </div>
+            <p id="mobile-signal-detail" class="phone-detail" aria-live="polite">合成觀察：需要判讀，不等於已確認軸承故障。</p>
+            <a class="phone-cta" href="/?v=0.3.0-final#signals">查看目前證據 <span aria-hidden="true">→</span></a>
+            <p class="phone-truth">合成示意 · 不是即時監控或診斷</p>
+          </div>
+        </div>
+      </section>
+
+      <aside class="proof-caption" aria-live="polite">
+        <span id="proof-index">01</span>
+        <p><strong id="proof-title">先辨識同一台水泵</strong><small id="proof-purpose">編輯式大字與產品共享構圖，不遮擋泵殼、馬達與主要接管。</small></p>
+        <em id="proof-viewport">1280 × 720</em>
+      </aside>
+    </main>
+
+    <footer class="proof-boundary">
+      <p><strong>M1 只驗證視覺系統。</strong>正式 v0.3.0 尚未修改，不代表 M2～M5 已完成。</p>
+      <p>工業精密為主 · 電影式深色為輔 · 無粒子變形 · 無新產品功能</p>
+    </footer>
+
+    <noscript><p class="noscript-note">JavaScript 未啟用。三個證明的文字與靜態水路仍可閱讀；3D 與切換控制不會執行。</p></noscript>
+    <script type="module" src="/src/m1-proofs.ts"></script>
+  </body>
+</html>

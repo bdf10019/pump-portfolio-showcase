@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-Hant" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050809" />
+    <meta name="description" content="從一台循環水泵，看見 AI 如何把設備訊號轉為判斷、執行與可追溯文件。" />
+    <title>循環之內｜AI 產品工程合輯</title>
+    <script>document.documentElement.classList.remove("no-js");</script>
+  </head>
+  <body class="story-page" data-version="0.3.7" data-route-phase="overview" data-signal="vibration" data-render-mode="poster">
+    <a class="skip-link" href="#story">跳到故事內容</a>
+
+    <header class="story-nav" aria-label="入口導覽">
+      <a class="story-brand" href="#opening" aria-label="循環之內，回到開場">
+        <span aria-hidden="true"></span>
+        循環之內
+      </a>
+      <div class="story-nav__actions">
+        <span id="render-status" class="render-status" aria-live="polite">海報模式</span>
+        <button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false">減少動態</button>
+        <a class="viewer-link" href="/viewer.html">模型工作台</a>
+      </div>
+    </header>
+
+    <div id="visual-stage" class="visual-stage" aria-label="循環水泵與閉式循環水路的視覺舞台">
+      <div id="story-poster" class="story-poster" role="img" aria-label="循環水泵位於閉式循環水路中央的靜態示意圖">
+        <svg class="poster-loop" viewBox="0 0 1200 760" aria-hidden="true">
+          <path d="M155 375V145H965V615H265V375H470" />
+          <path class="poster-loop__flow" d="M155 375V145H965V615H265V375H470" />
+          <circle cx="155" cy="375" r="70" />
+          <rect x="932" y="292" width="66" height="166" rx="18" />
+        </svg>
+        <div class="poster-pump" aria-hidden="true">
+          <span class="poster-pump__volute"></span>
+          <span class="poster-pump__hub"></span>
+          <span class="poster-pump__shaft"></span>
+          <span class="poster-pump__motor"></span>
+          <span class="poster-pump__base"></span>
+        </div>
+      </div>
+      <canvas id="story-canvas" aria-label="隨頁面捲動切換視角的循環水泵 3D 場景"></canvas>
+      <div class="stage-vignette" aria-hidden="true"></div>
+      <div class="water-edge-fade" aria-hidden="true"></div>
+      <div class="stage-readout" aria-hidden="true">
+        <span id="stage-index">01</span>
+        <span id="stage-label">開場布幕</span>
+      </div>
+      <p class="truth-chip">合成情境 · 示意訊號 · 非設備控制</p>
+    </div>
+
+    <main id="story" class="story" tabindex="-1">
+      <section id="opening" class="story-scene story-scene--opening is-active" data-scene="opening" aria-labelledby="opening-title">
+        <div class="scene-copy scene-copy--hero">
+          <p class="eyebrow">PERSISTENT SUBJECT · 01</p>
+          <h1 id="opening-title"><span class="title-line">一台水泵，</span><span class="title-line title-line--muted">貫穿整個流程。</span></h1>
+          <p class="scene-lead">先辨識主角，再理解它所在的系統與留下的訊號。三幕只改變視角與意義，不更換設備。</p>
+          <div class="hero-meta" aria-label="展示邊界"><span>EQ-PUMP-001</span><span>自製 3D 示意模型</span></div>
+          <a class="scroll-cue" href="#system"><span aria-hidden="true"></span>往下進入循環系統</a>
+        </div>
+      </section>
+
+      <section id="system" class="story-scene story-scene--system" data-scene="system" aria-labelledby="system-title">
+        <div class="scene-copy scene-copy--system">
+          <div class="system-heading">
+            <p class="scene-number">ENVIRONMENTAL ROUTE · 02</p>
+            <h2 id="system-title">先找到水泵，<br />再沿著回路走一圈。</h2>
+          </div>
+          <div class="system-card">
+            <p class="system-card__eyebrow">CLOSED LOOP / 合成示意</p>
+            <div class="system-phase-selector" role="group" aria-label="切換水路閱讀狀態">
+              <button class="system-phase-button is-active" type="button" data-route-phase="overview" aria-pressed="true">總覽</button>
+              <button class="system-phase-button" type="button" data-route-phase="supply" aria-pressed="false">供水</button>
+              <button class="system-phase-button" type="button" data-route-phase="return" aria-pressed="false">回水</button>
+            </div>
+            <ol class="system-route" aria-label="閉式循環閱讀順序">
+              <li data-route-segment="return"><span>01</span><strong>水箱</strong><small>回路起點與終點</small></li>
+              <li data-route-segment="supply"><span>02</span><strong>水泵</strong><small>推動循環的主角</small></li>
+              <li data-route-segment="supply"><span>03</span><strong>換熱設備</strong><small>系統中的負載端</small></li>
+              <li data-route-segment="return"><span>04</span><strong>回水</strong><small>沿路徑返回起點</small></li>
+            </ol>
+            <div id="system-route-detail" class="system-route-detail" data-route-phase="overview" aria-live="polite">
+              <span>設備關係示意</span><strong>先確認四個地標</strong><p>水箱、水泵、換熱設備與回水構成同一條閉式路徑。</p>
+            </div>
+            <div class="system-key" aria-label="水路圖例">
+              <span><i class="system-key__flow"></i>示意流向</span>
+              <span><i class="system-key__observe"></i>觀察位置</span>
+            </div>
+            <p class="system-note">只表示設備關係與方向，不是流體模擬、工程管徑或控制畫面。</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="signals" class="story-scene story-scene--signals" data-scene="signals" aria-labelledby="signals-title">
+        <div class="scene-copy scene-copy--signal">
+          <p class="scene-number">03 · OBSERVATION</p>
+          <h2 id="signals-title">異常不是單一數字。</h2>
+          <p>這組合成案例同時保留異常訊號與否定安全觀察，避免把「沒有火花」誤畫成正在起火。</p>
+
+          <ol class="signal-workflow" aria-label="訊號判讀順序">
+            <li><span>01</span><strong>先看觀察</strong></li>
+            <li><span>02</span><strong>再比對脈絡</strong></li>
+            <li><span>03</span><strong>最後保留限制</strong></li>
+          </ol>
+
+          <div class="signal-selector" role="group" aria-label="選擇觀察訊號">
+            <button class="signal-button is-active" type="button" data-signal="vibration" aria-pressed="true"><span>01</span><strong>持續震動</strong><small>觀察軸承與馬達側</small></button>
+            <button class="signal-button" type="button" data-signal="temperature" aria-pressed="false"><span>02</span><strong>軸承溫度偏高</strong><small>需要結合負載與歷史</small></button>
+            <button class="signal-button" type="button" data-signal="safety" aria-pressed="false"><span>03</span><strong>未發現危害跡象</strong><small>沒有洩漏、火花或焦味</small></button>
+          </div>
+
+          <div id="signal-detail" class="signal-detail" aria-live="polite">
+            <span>目前聚焦</span><strong>持續震動</strong><p>這是需要判讀的觀察，不等於已確認軸承故障。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="sample-ending" aria-labelledby="sample-ending-title">
+        <p class="scene-number">W5 · DESKTOP WATER FREEZE</p>
+        <h2 id="sample-ending-title">畫面可以降階，資訊不能消失。</h2>
+        <p>桌機水路已完成本機驗收並凍結，保留三幕與同一台主泵。已知著色器精度警告另列紀錄；不新增場景或產品功能，手機維持既有模型與排版。</p>
+        <a class="viewer-cta" href="/viewer.html">開啟模型工作台檢查細節</a>
+      </section>
+    </main>
+
+    <footer class="story-footer">
+      <p>EQ-PUMP-001 為合成展示案例，不代表真實設備尺寸、診斷、維修程序或安全認證。</p>
+      <p>作品一判斷 · 作品二執行 · 作品三整理文件</p>
+    </footer>
+
+    <noscript><p class="noscript-note">JavaScript 未啟用。你仍可閱讀完整文字與靜態水路海報；3D 鏡頭及訊號切換不會執行。</p></noscript>
+    <script type="module" src="/src/story.ts"></script>
+  </body>
+</html>

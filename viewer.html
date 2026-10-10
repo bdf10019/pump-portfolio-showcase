@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="EQ-PUMP-001 循環水泵核心總成 3D 素材檢視器。" />
+    <title>PUMP CORE 01｜循環水泵 3D 素材</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#viewer">跳到 3D 素材檢視器</a>
+    <a class="back-to-story" href="/">返回互動入口</a>
+    <header class="hero">
+      <div class="hero__eyebrow">PUMP-CORE-ASSET-01 · LOCAL PROCEDURAL MODEL</div>
+      <div class="hero__layout">
+        <div>
+          <p class="kicker">精細重製 · 鑄造、加工與裝配</p>
+          <h1>循環水泵<br /><span>核心總成</span></h1>
+        </div>
+        <div class="hero__copy">
+          <p>從中空流路、法蘭與固定螺栓，到曲面葉輪、滾珠軸承與馬達散熱片，逐層探索循環水泵。</p>
+          <p class="truth-note">這是合成展示模型，不是製造圖、故障診斷或設備安全認證。</p>
+        </div>
+      </div>
+    </header>
+
+    <main id="viewer" class="workbench">
+      <section class="stage-card" aria-labelledby="stage-title">
+        <div class="stage-card__topline">
+          <div>
+            <p class="kicker">REALTIME MATERIAL REVIEW</p>
+            <h2 id="stage-title">組裝、拆解與受控光線</h2>
+          </div>
+          <div class="status-cluster" aria-label="模型狀態">
+            <span id="render-status" class="status-pill">準備 3D</span>
+            <span class="status-pill status-pill--muted">v0.2.0 · 精細重製</span>
+          </div>
+        </div>
+
+        <div class="stage-layout">
+          <aside class="control-panel" aria-label="素材控制">
+            <fieldset>
+              <legend>模型狀態</legend>
+              <div class="segmented" role="group" aria-label="模型狀態">
+                <button class="control-button is-active" type="button" data-state="assembled">組裝</button>
+                <button class="control-button" type="button" data-state="exploded">爆炸</button>
+              </div>
+              <label class="range-label" for="explode-range">
+                <span>拆解進度</span><output id="explode-output">0%</output>
+              </label>
+              <input id="explode-range" type="range" min="0" max="100" value="0" />
+            </fieldset>
+
+            <fieldset>
+              <legend>檢視角度</legend>
+              <div class="button-grid" role="group" aria-label="檢視角度">
+                <button class="control-button is-active" type="button" data-view="three-quarter">三分之四</button>
+                <button class="control-button" type="button" data-view="front">正視</button>
+                <button class="control-button" type="button" data-view="side">側視</button>
+                <button class="control-button" type="button" data-view="top">俯視</button>
+                <button class="control-button button-grid__wide" type="button" data-view="quad">四視圖</button>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>燈光場景</legend>
+              <select id="lighting-scene" aria-label="燈光場景">
+                <option value="curtain">開場布幕</option>
+                <option value="system">水路俯視</option>
+                <option value="anomaly">異常觀察</option>
+                <option value="isolated" selected>抽出水泵</option>
+                <option value="exploded">爆炸拆解</option>
+                <option value="reassembled">重新組裝</option>
+              </select>
+              <label class="switch-row">
+                <input id="pointer-light" type="checkbox" checked />
+                <span>滑鼠受控跟隨光線</span>
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <legend>零件細節</legend>
+              <select id="detail-part" aria-label="選擇細看零件"></select>
+              <div class="segmented detail-actions">
+                <button id="focus-part" class="control-button" type="button" aria-pressed="false">單獨細看</button>
+                <button id="show-all" class="control-button" type="button">返回總成</button>
+              </div>
+            </fieldset>
+            <button id="export-glb" class="export-button" type="button">匯出組裝 GLB</button>
+          </aside>
+
+          <div id="canvas-shell" class="canvas-shell">
+            <div id="poster" class="poster" role="img" aria-label="循環水泵靜態替代圖">
+              <span class="poster__ring"></span>
+              <span class="poster__motor"></span>
+              <span class="poster__shaft"></span>
+              <span class="poster__label">EQ-PUMP-001</span>
+            </div>
+            <canvas id="pump-canvas" aria-label="可旋轉與拆解的循環水泵 3D 模型"></canvas>
+            <div id="quad-labels" class="quad-labels" hidden aria-hidden="true">
+              <span>正視</span><span>三分之四</span><span>側視</span><span>俯視</span>
+            </div>
+            <div class="canvas-hud" aria-hidden="true">
+              <span>Y ↑</span><span>主軸 +X</span><span>正面 +Z</span>
+            </div>
+            <p id="canvas-help" class="canvas-help">拖曳旋轉 · 滾輪縮放 · 點選零件</p>
+          </div>
+
+          <aside class="part-inspector" aria-live="polite">
+            <p class="kicker">SELECTED PART</p>
+            <h3 id="part-name">泵殼</h3>
+            <p id="part-id" class="mono">volute</p>
+            <p id="part-function">包覆葉輪並引導水流進出。</p>
+            <div class="signal-card">
+              <span>案例觀察</span>
+              <strong id="part-signal">與流路和泵浦本體相關；本案例不宣稱泵殼故障。</strong>
+            </div>
+            <p id="part-truth" class="truth-note">展示用簡化結構，不代表真實尺寸與公差。</p>
+          </aside>
+        </div>
+
+        <div class="metrics" aria-label="即時渲染資料">
+          <span><strong id="metric-parts">11</strong> 零件節點</span>
+          <span><strong id="metric-calls">—</strong> Draw calls</span>
+          <span><strong id="metric-triangles">—</strong> Triangles</span>
+          <span><strong id="metric-dpr">—</strong> DPR</span>
+        </div>
+      </section>
+
+      <section class="parts-section" aria-labelledby="parts-title">
+        <div class="section-heading">
+          <p class="kicker">NAMED PART CONTRACT</p>
+          <h2 id="parts-title">十一個穩定節點</h2>
+          <p>按鈕、3D 零件、說明與可存取狀態使用同一份資料契約。</p>
+        </div>
+        <div id="parts-grid" class="parts-grid"></div>
+      </section>
+
+      <section class="material-section" aria-labelledby="material-title">
+        <div class="section-heading">
+          <p class="kicker">PBR MATERIAL DIRECTION</p>
+          <h2 id="material-title">寫實材質，不虛構損壞</h2>
+        </div>
+        <div class="material-grid">
+          <article><span style="--swatch:#263746"></span><strong>環氧烤漆鑄鐵</strong><small>泵殼與底座</small></article>
+          <article><span style="--swatch:#A87339"></span><strong>工業鑄造青銅</strong><small>葉輪</small></article>
+          <article><span style="--swatch:#B8C1C5"></span><strong>拉絲不鏽鋼</strong><small>主軸與聯軸器</small></article>
+          <article><span style="--swatch:#111820"></span><strong>彈性體與陶瓷</strong><small>機械軸封</small></article>
+          <article><span style="--swatch:#4BC8DD"></span><strong>青藍流向</strong><small>只作水流示意</small></article>
+          <article><span style="--swatch:#F0A24A"></span><strong>琥珀觀察訊號</strong><small>不是故障宣判</small></article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>PUMP-CORE-ASSET-01 · 本機程序模型 · 不連線外部 3D 服務</p>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

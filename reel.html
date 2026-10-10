@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-Hant" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>循環之內｜黑白影片入口</title><link rel="icon" href="/assets/pump-brand.svg"></head>
+<body data-version="0.3.0" data-release="formal-local-desktop" data-phase="idle" data-mode="hero" data-item="-1">
+<canvas id="reel-background" aria-hidden="true"></canvas>
+<main>
+ <div id="screen" class="screen" aria-label="循環水泵與三作品的黑白短片">
+  <div id="scan" class="scan"></div><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+  <header><span>循環之內 / AI 產品工程</span><span>EQ-PUMP-001 · VOL. 02 · 2026</span></header>
+  <div id="model-stage"><canvas id="pump" hidden aria-label="自製精細水泵與逐件裝配動畫"></canvas><svg id="poster" viewBox="0 0 600 340" role="img" aria-label="水泵靜態替代示意"><g fill="#174957" stroke="#c2c9cc" stroke-width="2"><path d="M135 242h332v13H135zM292 115h133q45 0 45 50t-45 50H292z"/><circle cx="217" cy="167" r="63"/><circle cx="203" cy="172" r="24"/><path d="M206 104V72h24v32M274 166h30M335 120v92m17-92v92m17-92v92m17-92v92m17-92v92"/></g></svg></div>
+  <div id="assembly-title" class="assembly-title"><h2>從每個零件，到一台水泵。</h2><p id="assembly-note">透視內部結構</p><small><span id="assembly-count" aria-live="off">模型準備中</span> · 程序造型／非實際裝配程序</small></div>
+  <div id="hero" class="hero"><h1>循環之內<span>.</span></h1><p>一台水泵，三種工作。</p><small>判讀 · 經核准執行 · 整理文件</small></div>
+  <div id="index" class="index" hidden><div class="left"><small>INDEX / VOL. 02</small><ol id="list"></ol><h2 id="item-title"></h2><p id="item-subtitle"></p><p id="item-detail"></p></div><div id="preview" class="preview"><span id="preview-number"></span><div id="plate"></div><small>合成示意 / 非即時控制台</small></div></div>
+  <div id="summary" class="summary" hidden><div><strong>01</strong><span>判讀</span></div><div><strong>02</strong><span>經核准執行</span></div><div><strong>03</strong><span>整理文件</span></div><p>同一個情境，三個獨立作品。</p></div>
+  <footer><span>合成情境 / 不替代現場檢查 / 不控制設備</span><span id="timecode">TC 00:00.00</span></footer>
+ </div>
+ <div class="controls"><span id="render-status" role="status">模型準備中</span><div><button id="start" disabled>▶ 播放短片</button><button id="pause" hidden>暫停</button><button id="replay" hidden>重新播放</button><button id="reduce" aria-pressed="false">減少動態</button><button id="text-open">介紹文字</button></div><span id="duration-label">37 SEC / 無音樂</span></div>
+ <div id="ending" hidden><a id="explore" href="http://127.0.0.1:4173/intro-candidate.html?v=0.4.0#intro">深入了解 <span aria-hidden="true">↗</span></a></div>
+ <dialog id="transcript"><button id="text-close" autofocus>關閉</button><h2>同一台循環水泵，三個作品</h2><p>七秒開場：先看中央 X 光式透視與左右縮小排列的展示細件，再讓細件依序進場、逐漸放大並定位，組成完整模型；這不是實際製造、維修或安全操作程序。</p><div id="text-list"></div><p>合成觀察，不是故障確診；三作品各自運作，沒有控制真實設備。</p></dialog>
+ <noscript><style>.no-js .screen,.no-js .controls,.no-js #ending{display:none}</style><article><h1>循環之內</h1><p>作品一判讀與人工複核；作品二經核准執行；作品三整理文件與來源。以循環水泵作合成情境，不控制設備。JavaScript 未啟用，目前為文字模式。</p><a href="http://127.0.0.1:4173/intro-candidate.html?v=0.4.0#intro">深入了解（文字模式）</a></article></noscript>
+</main><script type="module" src="/src/reel.ts"></script></body></html>

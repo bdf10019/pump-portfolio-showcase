@@ -1,0 +1,25 @@
+{
+  "releaseId": "AB-20261010-formal",
+  "status": "formal-local-desktop",
+  "acceptedDate": "2026-10-10",
+  "timezone": "Asia/Taipei",
+  "aVersion": "0.4.0",
+  "bVersion": "0.3.0",
+  "scope": "桌機本機介紹網站；不代表三個核心產品已達生產部署標準",
+  "aUrl": "http://127.0.0.1:4173/intro-candidate.html?v=0.4.0#intro",
+  "bUrl": "http://127.0.0.1:4172/reel.html?v=0.3.0",
+  "visualAndTimingUnchanged": true,
+  "coreProductsChanged": false,
+  "publicDeployment": false,
+  "acceptanceDocument": "docs/PUBLIC_VERIFICATION.md",
+  "evidence": "docs/PUBLIC_VERIFICATION.md",
+  "rollbackDirectory": null,
+  "localRollbackNotPublished": true,
+  "limitations": [
+    "未進行手機版、跨瀏覽器或獨立陌生訪客驗收",
+    "未量測 FPS、長任務、記憶體與所有真實 GPU 失效",
+    "3D 程式包大於 500 kB 的建置警告仍存在",
+    "433 件是合成展示 mesh，不是實際 CAD 零件清單",
+    "本機入口需要對應預覽服務；網址版本參數不是回滾機制"
+  ]
+}
